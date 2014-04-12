@@ -32,9 +32,9 @@
 (flycheck-define-checker git-commit-check
   "A git commit checker"
   :command ("commit-check" "-0" source)
-  :error-patterns ((error line-start "Error on line "
-                          (one-or-more digit) " (actual line "
-                          line "): " (message) line-end))
+  :error-patterns ((error line-start "commit-check:"
+                          (one-or-more (not (any ":"))) ":" line ": "
+                          (message) line-end))
   :modes git-commit-mode)
 
 (add-to-list 'flycheck-checkers 'git-commit-check)
